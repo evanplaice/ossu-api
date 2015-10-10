@@ -5,7 +5,7 @@ mongoose.connect('/*location of database*/');
 var db = mongoose.connection;
 var Schema = mongoose.Schema;
 
-
+ 
 module.exports = function () {
   var userSchema = new Schema({       
     name_first:                     String,
@@ -29,7 +29,7 @@ module.exports = function () {
 
 
 /*
-* 
+*  Not sure how to handle this....
 */
 
     user_location: {
@@ -56,7 +56,7 @@ module.exports = function () {
       
 
 /*
-* Are we confimring new user registrations 
+* Are we confimring new user registrations ?
 */
 
     account_confirmation_info: {
@@ -83,7 +83,7 @@ module.exports = function () {
         last_post_date:           Date,
         date_registered:          { type: Date, default: Date.now }  
       }
-    }
+    
 
   });
   
