@@ -22,3 +22,6 @@ npm start
 * `/api/index.js` is the base api file, from here, we load models.
 * `/auth/index.js` will be the authentication api file. Add auth strategies to files in thie `/auth` folder
 * `/models` is the folder for individual model files
+
+# Contribute
+Check out the dev board for todo lists. [link](https://hansoftx.com/organization/59f76037ca6fe250d2eb8702/bf3c9bd6113eb354388b55ce)
