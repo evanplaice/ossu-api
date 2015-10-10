@@ -1,3 +1,4 @@
+require('dotenv').load()
 // the command to execute
 var command = process.argv[2] || '--create';
 
@@ -5,7 +6,7 @@ var command = process.argv[2] || '--create';
 var name = process.argv[3] || "profiles";
 
 // database URI
-var url = "mongodb://localhost:27017/ossu";
+var url = process.env.MONGO_URI;
 
 // Create a connection context
 var MongoClient = require('mongodb').MongoClient,

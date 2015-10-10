@@ -8,9 +8,13 @@
     "url": "git@github.com:open-source-society/ossu-api.git"
   },
   "engines": {
-    "node":"*"
+    "node": "*"
   },
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "helmet": "^0.12.0",
     "mongodb": "^2.0.45"
   },
   "license": "MIT",

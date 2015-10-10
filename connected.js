@@ -1,8 +1,9 @@
+require('dotenv').load()
 // Create a connection context
 var MongoClient = require('mongodb').MongoClient;
 
 // Connect to the db
-MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+MongoClient.connect(process.env.MONGO_URI, function(err, db) {
   if(!err) {
     console.log("Connection OK");
   } else {

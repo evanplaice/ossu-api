@@ -2,78 +2,23 @@
 
 **Open Source Society University API server**
 
-# Installation
+### Install the server
+Take a look at `INSTALLING.md`
 
-### 1. Clone the repository
+### Configure environment
+Take a look at `.envsample` and rename it to `.env`. Edit the values acording to your environment (please do not bring `.env` into source control)
 
-  ```bash
-  git clone git@github.com:open-source-society/ossu-api.git
-  ```
-
-### 2. Load the dependencies (via NPM)
-
-```bash
-npm install
+### Start the server
+```
+npm start
 ```
 
-### 3a. Install MongoDB (via homebrew)
+### Test an api route
 
-```bash
-brew update && brew install mongodb
-```
+`curl localhost:PORT/api/sample`
 
-### 3b. Install MongoDB (manual)
 
-Download the binaries
-```bash
-curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.0.6.tgz
-```
-
-Extract the binaries
-```bash
-tar -zxvf mongodb-osx-x86_64-3.0.6.tgz
-```
-
-Copy the extracted files to the target directory
-```bash
-mkdir /opt/mondodb
-cp -R -n mongodb-osx-x86_64-3.0.<6 class="tgz"></6>
-```
-
-Add MongoDB to the **PATH** variable
-```bash
-export PATH=/opt/mongodb/bin:$PATH
-```
-
-*Note: To permanently update PATH add the install directory to ~/.bashrc.*
-
-###4. Create the data folder
-```bash
-mkdir data
-```
-
-###5. Startup up MongoDB
-```bash
-mongod --dbpath ./data
-```
-
-# Database Operations
-
-### Verify the connection to MongoDB
-```bash
-node connection.js
-```
-
-### Create a collection (ie table)
-```bash
-node collection.js --create [name]
-```
-
-### Delete a collection
-```bash
-node collection.js --destroy [name]
-```
-
-# Dependencies
-
-- MongoDB
+# Project Structure
+* `/api/index.js` is the base api file, from here, we load models.
+* `/auth/index.js` will be the authentication api file. Add auth strategies to files in thie `/auth` folder
+* `/models` is the folder for individual model files
