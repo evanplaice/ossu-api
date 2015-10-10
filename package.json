@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Open Source Society API",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:open-source-society/ossu-api.git"
