@@ -57,6 +57,23 @@ mkdir data
 mongod --dbpath ./data
 ```
 
+# Database Operations
+
+### Verify the connection to MongoDB
+```bash
+node connection.js
+```
+
+### Create a collection (ie table)
+```bash
+node collection.js --create [name]
+```
+
+### Delete a collection
+```bash
+node collection.js --destroy [name]
+```
+
 # Dependencies
 
 - MongoDB
