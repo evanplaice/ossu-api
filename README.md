@@ -7,7 +7,7 @@
 1. Clone the repository
 
   ```bash
-  git clone git@github.com:open-source-society/ossu-ui.git@github
+  git clone git@github.com:open-source-society/ossu-api.git@github
   ```
 
 1. Load the dependencies (via NPM)
