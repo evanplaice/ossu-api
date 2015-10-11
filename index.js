@@ -28,7 +28,7 @@ function onDatabaseConnection () {
   app.set('db', db);
 
   // compile models
-  fs.readdirSync('./models/').forEach( (file) => {
+  fs.readdirSync('./models/').forEach((file) => {
     require('./models/' + file)();
   });
 

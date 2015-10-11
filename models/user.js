@@ -22,7 +22,7 @@ module.exports = () => {
     curriculum: [ {
       id:                           Schema.types.ObjectId,
       started:                      Date,
-      completed:                    { type: Boolean, default: false }
+      completed:                    { type: Boolean, default: false },
       progress: [ {
         course_id:                  Schema.types.ObjectId,
         started:                    Date,
