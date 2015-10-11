@@ -4,7 +4,9 @@
   "description": "Open Source Society API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "semistandard",
+    "check-style": "semistandard || true"
   },
   "repository": {
     "type": "git",
@@ -12,6 +14,9 @@
   },
   "engines": {
     "node": "*"
+  },
+  "devDependencies": {
+    "semistandard": "^7.0.2"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
