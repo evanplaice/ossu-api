@@ -28,7 +28,8 @@ module.exports = () => {
       progress: [ {
         course_id: Schema.Types.ObjectId,
         started: Date,
-        completed: { type: Boolean, default: false }
+        completed: { type: Boolean, default: false },
+        verified: { type: Boolean, default: false }
       } ]
     } ],
 
