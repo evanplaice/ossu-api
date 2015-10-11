@@ -22,11 +22,11 @@ module.exports = () => {
     // When a user enrolls in a curriculum add to this array [['Computer Science and Engineering', (monogo_object trakcing progess)]]
     // Front end can generate link to their progress page from this....
     curriculum: [ {
-      id: Schema.types.ObjectId,
+      id: Schema.Types.ObjectId,
       started: Date,
       completed: { type: Boolean, default: false },
       progress: [ {
-        course_id: Schema.types.ObjectId,
+        course_id: Schema.Types.ObjectId,
         started: Date,
         completed: { type: Boolean, default: false }
       } ]
@@ -48,9 +48,7 @@ module.exports = () => {
   });
 
   // static methods
-  userSchema.statics.createUser = (newUser, callback) => {
-    newUser.save(callback);
-  };
+  // userSchema.statics.
 
   // instance methods
 
