@@ -15,7 +15,7 @@ That said, if you want to become a regular contributor to the project and a memb
 
 ## Workflow
 
-Familiarize yourself with the process outlined in [Comparing Workflows](comparing-workflows).
+Familiarize yourself with the process outlined in [Comparing Workflows][comparing-workflows].
 
 To summarize:
 - do not develop directly on the 'master' branch
@@ -26,7 +26,7 @@ To summarize:
 
 ## Style
 
-Code style should follow [SemiStandard][semi-standard] (ie [Javascript Standard](standard) with semicolons).
+Code style should follow [SemiStandard][semi-standard] (ie [Javascript Standard][standard] with semicolons).
 
 > - **2 spaces** – for indentation
 > - **Single quotes for strings** – except to avoid escaping
@@ -67,4 +67,3 @@ npm run check-style
 [semi-standard]: https://github.com/Flet/semistandard
 [standard]: https://github.com/feross/standard
 [more-goodness]: https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-
