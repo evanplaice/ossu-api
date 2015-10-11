@@ -27,5 +27,9 @@
   },
   "devDependencies": {
     "semistandard": "^7.0.2"
+  },
+  "scripts": {
+    "test": "semistandard",
+    "check-style": "semistandard || true"
   }
 }
