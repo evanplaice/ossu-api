@@ -8,10 +8,12 @@ var Schema = mongoose.Schema;
  
 module.exports = function () {
   var userSchema = new Schema ({       
-    fname:                          String,
-    lname:                          String,
-    email:                          String,
-    username:                       { type: String, index: true },
+    fname:          String,
+    lname:          String,
+    email:          { type: String, index: true },
+    github:         { type: String, index: true },
+    twitter:        String,
+    linkedin:       String,
 
     account: {
       admin:        { type: Boolean, default: false },
@@ -48,17 +50,6 @@ module.exports = function () {
         display:                    { type: Boolean, default: false } 
       }               
     }
-
-/*
-* user can add social media profile info, websites and etc, for each add new element to array, need a model for this?
-* example:
-* [['github', 'waterlooSunset'], ['twitter', '@twitterHandle']]
-* 
-*
-*/
-    sites: [
-        { service: String, handle: String }
-      ]
 
   });
 
