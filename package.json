@@ -19,7 +19,7 @@
     "express": "^4.13.3",
     "helmet": "^0.12.0",
     "mongodb": "^2.0.45",
-    "passport": "1.0.0",
+    "passport": "0.2.2",
     "passport-github2": "0.1.9",
     "passport-http": "0.2.2",
     "redis": "*",
