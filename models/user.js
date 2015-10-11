@@ -22,11 +22,11 @@ module.exports = () => {
     // When a user enrolls in a curriculum add to this array [['Computer Science and Engineering', (monogo_object trakcing progess)]]
     // Front end can generate link to their progress page from this....
     curriculum: [ {
-      id: Schema.Types.ObjectId,
+      id: { type: Schema.Types.ObjectId, ref: 'curriculum' },
       started: Date,
       completed: { type: Boolean, default: false },
       progress: [ {
-        course_id: Schema.Types.ObjectId,
+        course: { type: Schema.Types.ObjectId, ref: 'course' },
         started: Date,
         completed: { type: Boolean, default: false },
         verified: { type: Boolean, default: false }
