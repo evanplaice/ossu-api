@@ -1,3 +1,13 @@
 node_modules
+npm-debug.log
 data
 .env
+*.swo
+*.swp
+*.~
+npm-debug.log
+
+// apple metadata
+.DS_Store
+.AppleDouble
+.LSOverride

@@ -1,20 +1,23 @@
-var express     = require('express'),
-    bodyParser  = require('body-parser'),
-    helmet      = require('helmet');
+'use strict';
 
-/** 
+let express = require('express');
+let bodyParser = require('body-parser');
+let helmet = require('helmet');
+let UsersApi = require('./users');
+
+/**
  * Returns an express router to handle api endpoints.
- * 
+ * Receives an instance of the express app.
 */
-module.exports = function() {
-    var router = express.Router();
+module.exports = (app) => {
+  let router = express.Router();
+  let db = app.get('db');
 
-    router.use( helmet() );
-    router.use( bodyParser.json() );
+  router.use(helmet());
+  router.use(bodyParser.json());
 
-    router.get('/sample', function(req, res){
-        res.status(200).send('A sample api route.');
-    });
+  // mount the users api
+  router.use('/users', UsersApi(db));
 
-    return router;
-}
+  return router;
+};
