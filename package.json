@@ -18,18 +18,16 @@
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "helmet": "^0.12.0",
-    "mongodb": "^2.0.45"
+    "mongodb": "^2.0.45",
+    "passport": "1.0.0",
+    "passport-github2": "0.1.9",
+    "passport-http": "0.2.2",
+    "redis": "*",
+    "mongoose": "^4.1.0"    
   },
   "license": "MIT",
   "homepage": "https://github.com/open-source-society/ossu-api",
   "bugs": {
     "url": "https://github.com/open-source-society/ossu-api/issues"
-  },
-  "devDependencies": {
-    "semistandard": "^7.0.2"
-  },
-  "scripts": {
-    "test": "semistandard",
-    "check-style": "semistandard || true"
   }
 }
