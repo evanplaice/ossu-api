@@ -1,13 +1,8 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-mongoose.connect('/*location of database*/');           
-
-var db = mongoose.connection;
-var Schema = mongoose.Schema;
-
- 
 module.exports = function () {
-  var userSchema = new Schema ({       
+  var userSchema = new Schema ({      
     fname:          String,
     lname:          String,
     email:          { type: String, index: true },
@@ -24,38 +19,32 @@ module.exports = function () {
     
     // When a user enrolls in a curriculum add to this array [['Computer Science and Engineering', (monogo_object trakcing progess)]]
     // Front end can generate link to their progress page from this....
-
-    curriculum: {
-      id:                           ObjectId,
+    curriculum: [ {
+      id:                           Schema.types.ObjectId,
       started:                      Date,
       progress: [ {
-        course_id:                  ObjectId,
+        course_id:                  Schema.types.ObjectId,
         started:                    Date,
-        status:                     String
+        status:                     { type: String, default: 'in-progress' }
       } ]
-    }
+    } ],
 
-/*
-*  We should let users choose whether or not to share a location. If not it can deafult to be based on their ip when they register. 
-*  display would allow a user to opt-out of sharing this information on their personal page.
-*  coords [lat: long, lng: long]?
-*/
-
-
+    /*
+    *  We should let users choose whether or not to share a location. If not it can deafult to be based on their ip when they register. 
+    *  display would allow a user to opt-out of sharing this information on their personal page.
+    * just use a city and country for now
+    */
     location: {
-      shared:                       { type: Boolean, default: false }   
-      city: {
-        name:                       String,
-        coord:                      /*lat & long*/,
-        display:                    { type: Boolean, default: false } 
-      }               
+      public:    { type: Boolean, default: true},
+      city:     String,
+      country:  String
     }
 
   });
 
-  userSchema.statics.createUser = function ( newUser, callback ) {
-      newUser.save ( callback );
+  userSchema.statics.createUser = function (newUser, callback) {
+      newUser.save(callback);
   }; 
 
-  return mongoose.model( 'user', userSchema );
+  return mongoose.model('user', userSchema);
 }
