@@ -57,7 +57,7 @@ mongod --dbpath ./data
 
 ### Verify the connection to MongoDB
 ```bash
-node connection.js
+node connected.js
 ```
 
 ### Create a collection (ie table)
