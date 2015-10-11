@@ -35,7 +35,7 @@ module.exports = function () {
     * just use a city and country for now
     */
     location: {
-      public:    { type: Boolean, default: true},
+      public:   { type: Boolean, default: true},
       city:     String,
       country:  String
     }

@@ -1,20 +1,21 @@
-//load env variables
+// load env variables
 require('dotenv').load();
-//load deps
-var express = require('express'),
-    Api     = require('./api'),
+// load deps
+var express  = require('express'),
+    Api      = require('./api'),
     mongoose = require('mongoose'),
-    fs      = require('fs');
-    
-//load the app
+    fs       = require('fs');
+  
+// load the app
 var app = express(),
     db;
 
 //connect to the db
-mongoose.connect( process.env.MONGO_URI );
+mongoose.connect(process.env.MONGO_URI);
 db = mongoose.connection;
 
-db.once( 'open', onDatabaseConnection ); 
+db.once('open', onDatabaseConnection); 
+
 
 
 
@@ -24,23 +25,22 @@ db.once( 'open', onDatabaseConnection );
  * app.get('db') will return the database connection.
  */
 function onDatabaseConnection() {
-    //set the connection object to be used in api files
-    app.set( 'db', db );
+  // set the connection object to be used in api files
+  app.set('db', db);
 
-    //compile models
-    fs.readdirSync( './models/' ).forEach(function (file) {
-        require( './models/' + file )();
-    });
+  // compile models
+  fs.readdirSync('./models/').forEach(function (file) {
+    require('./models/' + file)();
+  });
 
-    //mount the api router
-    app.use( '/api', Api(app) );
+  // mount the api router
+  app.use( '/api', Api(app) );
 
-    //TODO: mount an auth router
-    // app.use( '/auth', Auth() );
+  // TODO: mount an auth router
+  // app.use( '/auth', Auth() );
 
-    //start the server
-    app.listen( process.env.PORT || 8080, function(){
-        console.log( 'Server listening on port', process.env.PORT );
-    });
-
+  // start the server
+  app.listen(process.env.PORT || 8080, function(){
+    console.log('Server listening on port', process.env.PORT);
+  });
 }
