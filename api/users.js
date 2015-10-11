@@ -2,7 +2,7 @@
 
 let express = require('express');
 
-module.exports = function (db) {
+module.exports = (db) => {
   let router = express.Router();
   // let userModel = db.model('user');
 

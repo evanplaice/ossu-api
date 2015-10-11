@@ -28,7 +28,7 @@ function onDatabaseConnection () {
   app.set('db', db);
 
   // compile models
-  fs.readdirSync('./models/').forEach(function (file) {
+  fs.readdirSync('./models/').forEach( (file) => {
     require('./models/' + file)();
   });
 
@@ -39,7 +39,7 @@ function onDatabaseConnection () {
   // app.use('/auth', Auth());
 
   // start the server
-  app.listen(process.env.PORT || 8080, function () {
+  app.listen(process.env.PORT || 8080, () => {
     console.log('Server listening on port', process.env.PORT);
   });
 }
