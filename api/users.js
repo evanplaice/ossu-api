@@ -1,23 +1,19 @@
-var express = require('express');
+'use strict';
 
-module.exports = function(db) {
-  var router = express.Router(),
-    userModel = db.model('user');
+let express = require('express');
+
+module.exports = function (db) {
+  let router = express.Router();
+  // let userModel = db.model('user');
 
   /** list all users */
-  router.get('/', function(req, res) {
-
-  });
+  router.get('/', (req, res) => {});
 
   /** get user by id */
-  router.get('/:id', function(req, res) {
-
-  });
+  router.get('/:id', (req, res) => {});
 
   /** save a new user */
-  router.post('/:id', function(req, res) {
-
-  });
+  router.post('/:id', (req, res) => {});
 
   return router;
-}
+};
