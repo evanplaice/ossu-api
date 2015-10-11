@@ -13,7 +13,53 @@ That said, if you want to become a regular contributor to the project and a memb
 2. Within 48 hours we will send you a Slack invite so you can introduce yourself and come chat with us
 3. If all goes well, we will send you an invite to the OSS organization on GitHub
 
+## Workflow
+
+Familiarize yourself with the process outlined in [Comparing Workflows](comparing-workflows).
+
+To summarize:
+- do not develop directly on the 'master' branch
+- updates to 'master' will only occur during version increments
+- only the 'develop' branch will be merged into 'master'
+- if you're developing a new feature, create a new feature branch
+- feature branches will be merged into develop following approval
+
+## Style
+
+Code style should follow [SemiStandard][semi-standard] (ie [Javascript Standard](standard) with semicolons).
+
+> - **2 spaces** – for indentation
+> - **Single quotes for strings** – except to avoid escaping
+> - **No unused variables** – this one catches tons of bugs!
+> - **Space after keywords** if (condition) { ... }
+> - **Space after function name** function name (arg) { ... }
+> - Always use === instead of == – but obj == null is allowed to check null || undefined.
+> - Always handle the node.js err function parameter
+> - Always prefix browser globals with window – except document and navigator are okay
+>   - Prevents accidental use of poorly-named browser globals like open, length, event, and name.
+> - **And more goodness** – give standard a try today!
+tandard Style, or check out some of the repositories that use standard.
+
+*Source: [github.com/feross/standard][standard]*
+
+To Validate:
+
+You'll need to have the devtools installed.
+```bash
+npm install --dev
+```
+
+SemiStandard is will run with the rest of the tests
+```bash
+npm test
+```
+
 [apply]: https://github.com/open-source-society/computer-science/issues/109
 [front-end]: https://github.com/open-source-society/ossu-ui/tree/develop
 [back-end]: https://github.com/open-source-society/ossu-api/tree/develop
 [form]: https://soullesswaffle.typeform.com/to/xuTU4O
+[comparing-workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
+[semi-standard]: https://github.com/Flet/semistandard
+[standard]: https://github.com/feross/standard
+[more-goodness]: https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+
