@@ -16,6 +16,7 @@
     "node": "*"
   },
   "devDependencies": {
+    "babel-eslint": "^4.1.3",
     "semistandard": "^7.0.2"
   },
   "dependencies": {
@@ -28,11 +29,14 @@
     "passport-github2": "0.1.9",
     "passport-http": "0.2.2",
     "redis": "*",
-    "mongoose": "^4.1.0"    
+    "mongoose": "^4.1.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/open-source-society/ossu-api",
   "bugs": {
     "url": "https://github.com/open-source-society/ossu-api/issues"
+  },
+    "semistandard": {
+    "parser": "babel-eslint"
   }
 }
