@@ -6,3 +6,8 @@ data
 *.swp
 *.~
 npm-debug.log
+
+// apple metadata
+.DS_Store
+.AppleDouble
+.LSOverride
