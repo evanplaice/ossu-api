@@ -2,10 +2,11 @@
 'use strict';
 let assert = require('chai').assert;
 let OssServer = require('./../index');
+let db = OssServer.get('db');
 
 describe('api server', () => {
   before((done) => {
-    OssServer.get('db').once('open', () => {
+    db.once('open', () => {
       done();
     });
   });
@@ -16,31 +17,10 @@ describe('api server', () => {
 
   it('should have an instance of the database', () => {
     // todo: check that the database is actually connected
-    assert.isDefined(OssServer.get('db'));
+    assert.isDefined(db);
   });
 });
 
-describe('User Model', () => {
-  let db = OssServer.get('db');
-  let UserModel = db.model('user');
-
-  before((done) => {
-    // empty colleciton
-    UserModel.remove(() => {
-      done();
-    });
-  });
-
-  it('saves without error', (done) => {
-    let user = new UserModel({
-      fname: 'John',
-      lname: 'Doe'
-    });
-
-    user.save((err, model) => {
-      assert.isNull(err);
-      assert.isDefined(model._id);
-      done();
-    });
-  });
+describe('Models', () => {
+  require('./suite_models.js')(db);
 });
