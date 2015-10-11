@@ -3,7 +3,8 @@ require('dotenv').load();
 //load deps
 var express = require('express'),
     Api     = require('./api'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    fs      = require('fs');
     
 //load the app
 var app = express(),
@@ -24,7 +25,12 @@ db.once( 'open', onDatabaseConnection );
  */
 function onDatabaseConnection() {
     //set the connection object to be used in api files
-    app.set('db', db);
+    app.set( 'db', db );
+
+    //compile models
+    fs.readdirSync( './models/' ).forEach(function (file) {
+        require( './models/' + file )();
+    });
 
     //mount the api router
     app.use( '/api', Api(app) );
@@ -36,4 +42,5 @@ function onDatabaseConnection() {
     app.listen( process.env.PORT || 8080, function(){
         console.log( 'Server listening on port', process.env.PORT );
     });
+
 }
