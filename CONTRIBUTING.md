@@ -44,14 +44,19 @@ tandard Style, or check out some of the repositories that use standard.
 
 To Validate:
 
-You'll need to have the devtools installed.
+You need to have the devtools installed
 ```bash
 npm install --dev
 ```
 
-SemiStandard is will run with the rest of the tests
+SemiStandard can be run with the tests
 ```bash
 npm test
+```
+
+Or standalone
+```bash
+npm run check-style
 ```
 
 [apply]: https://github.com/open-source-society/computer-science/issues/109
