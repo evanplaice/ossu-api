@@ -1,6 +1,6 @@
-var mongoose = require ( 'mongoose' );
+var mongoose = require('mongoose');
 
-mongoose.connect ( '/*location of database*/' );           
+mongoose.connect('/*location of database*/');           
 
 var db = mongoose.connection;
 var Schema = mongoose.Schema;
@@ -50,9 +50,10 @@ module.exports = function () {
 * 
 *
 */
-    sites: [
-        { service: String, handle: String }
-      ]
+    sites: [ { 
+      service:                      String, 
+      handle:                       String 
+    } ]
 
 /*
 *   We'll probably have to deal with this at some point unfortunately
@@ -75,11 +76,11 @@ module.exports = function () {
 
   });
   
-  return mongoose.model( 'user', userSchema );
+  return mongoose.model('user', userSchema);
 
 }
 
 
-module.exports.createUser = function ( newUser, callback ) {
-    newUser.save ( callback );
+module.exports.createUser = function(newUser, callback) {
+    newUser.save(callback);
 }
