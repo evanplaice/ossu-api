@@ -6,7 +6,7 @@ module.exports =  () => {
   var categorySchema = new Schema ({       
     name:           { type: String, index: true } //Name of the category
     curriculum:     ObjectId, //Curriculum to which the category belongs
-    courses:        [ { name: Shema.types.ObjectId } ]  
+    courses:        [ { name: Schema.types.ObjectId } ]  
     }
 
   });
