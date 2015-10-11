@@ -27,11 +27,6 @@ module.exports = function () {
       } ]
     }
 
-
-
-    [ 
-        { curriculum: String, user_curriculum: curriculum_id,  }
-    ]
 /*
 *  We should let users choose whether or not to share a location. If not it can deafult to be based on their ip when they register. 
 *  display would allow a user to opt-out of sharing this information on their personal page.
