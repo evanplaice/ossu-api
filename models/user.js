@@ -37,14 +37,25 @@ module.exports = function () {
     location: {
       public:   { type: Boolean, default: true},
       city:     String,
-      country:  String
+      country:  String,
+      // lat:      Number,
+      // lon:      Number
     }
 
   });
-
+  
+  // static methods
   userSchema.statics.createUser = function (newUser, callback) {
       newUser.save(callback);
-  }; 
+  };
+
+  //instance methods
+
+  // userSchema.methods.setCoordinates = function(cb) {
+  //   // compute coordinates using a map library
+  //   // save under this.lat and this.lon
+  //   // cb()
+  // }
 
   return mongoose.model('user', userSchema);
 }
