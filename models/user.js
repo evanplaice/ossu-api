@@ -8,11 +8,19 @@ var Schema = mongoose.Schema;
  
 module.exports = function () {
   var userSchema = new Schema ({       
-    fname:                          String,
-    lname:                          String,
-    email:                          String,
-    username:                       { type: String, index: true }
-    admin:                          { type: Boolean, default: false }
+    fname:          String,
+    lname:          String,
+    email:          { type: String, index: true },
+    github:         { type: String, index: true },
+    twitter:        String,
+    linkedin:       String,
+
+    account: {
+      admin:        { type: Boolean, default: false },
+      active:       { type: Boolean, default: false },
+      lastlogin:    { type: Date, default: Date.now },
+      registered:   { type: Date, default: Date.now }, 
+    },
     
     // When a user enrolls in a curriculum add to this array [['Computer Science and Engineering', (monogo_object trakcing progess)]]
     // Front end can generate link to their progress page from this....
@@ -43,44 +51,11 @@ module.exports = function () {
       }               
     }
 
-/*
-* user can add social media profile info, websites and etc, for each add new element to array, need a model for this?
-* example:
-* [['github', 'waterlooSunset'], ['twitter', '@twitterHandle']]
-* 
-*
-*/
-    sites: [ { 
-      service:                      String, 
-      handle:                       String 
-    } ]
-
-/*
-*   We'll probably have to deal with this at some point unfortunately
-*/
-
-      acct: {
-        suspend:                  { type: Boolean, default: false }  
-        remove:                   { type: Boolean, default: false }
-      }
-      
-/*
-* Maybe some more intersting things to track, or maybe axe this all together.
-*/
-
-      meta: {
-        lastlogin:                { type: Date, default: Date.now }
-        registered:               { type: Date, default: Date.now }  
-      }
-    
-
   });
-  
-  return mongoose.model('user', userSchema);
 
-}
+  userSchema.statics.createUser = function ( newUser, callback ) {
+      newUser.save ( callback );
+  }; 
 
-
-module.exports.createUser = function(newUser, callback) {
-    newUser.save(callback);
+  return mongoose.model( 'user', userSchema );
 }
