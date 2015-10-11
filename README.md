@@ -6,7 +6,7 @@
 Take a look at `INSTALLING.md`
 
 ### Configure environment
-Take a look at `.envsample` and rename it to `.env`. Edit the values acording to your environment (please do not bring `.env` into source control)
+Take a look at `.envsample` and rename it to `.env`. Edit the values according to your environment (please do not bring `.env` into source control)
 
 ### Start the server
 ```
