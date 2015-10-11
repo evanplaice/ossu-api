@@ -24,5 +24,8 @@
   "homepage": "https://github.com/open-source-society/ossu-api",
   "bugs": {
     "url": "https://github.com/open-source-society/ossu-api/issues"
+  },
+  "devDependencies": {
+    "semistandard": "^7.0.2"
   }
 }
