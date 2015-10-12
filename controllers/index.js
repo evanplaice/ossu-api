@@ -13,8 +13,8 @@ let loader = require('../helpers/loader');
 module.exports = (db) => {
   let Controllers = {};
 
-  loader('controllers').forEach( (controller) => {
-    Controllers[controller.name] = new controller.klass(db);
+  loader('controllers').forEach((controller) => {
+    Controllers[controller.name] = new controller.Klass(db);
   });
 
   return Controllers;

@@ -1,26 +1,29 @@
 /*global describe it before */
 'use strict';
-let assert = require('chai').assert;
-let OssServer = require('./../index');
-let db = OssServer.get('db');
+
+let expect = require('chai').expect;
+let Server = require('../index');
+let db = Server.get('db');
 
 describe('api server', () => {
   before((done) => {
-    db.once('open', () => {
+    db['database'].once('connected', () => {
       done();
     });
   });
 
   it('should return an Express app', () => {
-    assert.isDefined(OssServer && OssServer.mountpath, OssServer.get);
+    expect(Server).to.not.be.null;
+    expect(Server).to.have.property('mountpath');
+    expect(Server).to.have.property('get');
   });
 
   it('should have an instance of the database', () => {
     // todo: check that the database is actually connected
-    assert.isDefined(db);
+    expect(db).to.not.be.null;
   });
 });
 
 describe('Models', () => {
-  require('./suite_models.js')(db);
+  require('./models')(db);
 });

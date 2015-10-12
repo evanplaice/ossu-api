@@ -6,7 +6,6 @@ let express = require('express');
 // load database
 let db = require('../helpers/database');
 
-
 // load the app
 let app = express();
 

@@ -14,6 +14,7 @@ let Api = require('./api');
 
 db['database'].once('connected', startServer);
 
+module.exports = app;
 
 function startServer () {
   // set the api routes

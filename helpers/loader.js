@@ -8,19 +8,19 @@ let inflected = require('inflection');
 module.exports = (dir) => {
   let rootPath = path.join(__dirname, '/../', dir);
   let ret = [];
-  fs.readdirSync(rootPath).forEach( (file) => {
-    if ( !fs.statSync( rootPath + '/' + file).isFile() || !isLoadable(file) || file == 'index.js' ) {
+  fs.readdirSync(rootPath).forEach((file) => {
+    if (!fs.statSync(rootPath + '/' + file).isFile() || !isLoadable(file) || file === 'index.js') {
       return;
     }
 
     ret.push({
-      klass: require( path.join(rootPath, file)),
+      Klass: require(path.join(rootPath, file)),
       name: inflected.camelize(path.basename(file, '.js'))
     });
   });
 
   return ret;
-}
+};
 
 /**
  *
