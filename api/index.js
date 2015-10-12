@@ -1,8 +1,11 @@
 'use strict';
 
+// load deps
 let express = require('express');
-let bodyParser = require('body-parser');
 let helmet = require('helmet');
+let bodyParser = require('body-parser');
+
+// load the routes
 let UsersApi = require('./users');
 
 /**
@@ -16,8 +19,11 @@ module.exports = (app) => {
   router.use(helmet());
   router.use(bodyParser.json());
 
+  // load controllers
+  let Controllers = require('../controllers')(db);
+
   // mount the users api
-  router.use('/users', UsersApi(db));
+  router.use('/users', UsersApi(Controllers.User));
 
   return router;
 };

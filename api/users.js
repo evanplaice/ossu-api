@@ -1,19 +1,22 @@
 'use strict';
 
+// load deps
 let express = require('express');
 
-module.exports = (db) => {
+module.exports = (Controller) => {
   let router = express.Router();
-  // let userModel = db.model('user');
 
   /** list all users */
-  router.get('/', (req, res) => {});
+  router.get('/', Controller.show);
 
   /** get user by id */
-  router.get('/:id', (req, res) => {});
+  router.get('/:id', Controller.get);
 
   /** save a new user */
-  router.post('/:id', (req, res) => {});
+  router.post('/:id', Controller.create);
+
+  /** delete a user */
+  router.delete('/:id', Controller.destroy);
 
   return router;
 };
