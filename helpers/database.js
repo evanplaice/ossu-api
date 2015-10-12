@@ -29,7 +29,7 @@ module.exports = db;
  */
 function loadModels () {
   loader('models').forEach((model) => {
-    db[model.name] = model.Klass();
+    db[model.name] = model.File();
   });
 }
 

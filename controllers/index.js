@@ -14,7 +14,7 @@ module.exports = (db) => {
   let Controllers = {};
 
   loader('controllers').forEach((controller) => {
-    Controllers[controller.name] = new controller.Klass(db);
+    Controllers[controller.name] = new controller.File(db);
   });
 
   return Controllers;

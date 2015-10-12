@@ -4,6 +4,6 @@ let loader = require('../../helpers/loader');
 
 module.exports = (db) => {
   loader('test/models').forEach((model) => {
-    model.Klass(db);
+    model.File(db);
   });
 };

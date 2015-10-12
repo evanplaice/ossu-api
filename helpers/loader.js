@@ -3,7 +3,6 @@
 // load deps
 let fs = require('fs');
 let path = require('path');
-let inflected = require('inflection');
 
 module.exports = (dir) => {
   let rootPath = path.join(__dirname, '/../', dir);
@@ -14,8 +13,8 @@ module.exports = (dir) => {
     }
 
     ret.push({
-      Klass: require(path.join(rootPath, file)),
-      name: inflected.camelize(path.basename(file, '.js'))
+      File: require(path.join(rootPath, file)),
+      name: camelize(path.basename(file, '.js'))
     });
   });
 
@@ -29,4 +28,16 @@ module.exports = (dir) => {
  */
 function isLoadable (name) {
   return /\.(js|coffee|lf)$/.test(name);
+}
+
+/**
+ *
+ * Camelize strings
+ *
+ */
+function camelize (str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+    if (+match === 0) return '';
+    return index !== 0 ? match.toLowerCase() : match.toUpperCase();
+  });
 }
