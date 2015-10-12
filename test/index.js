@@ -2,7 +2,7 @@
 'use strict';
 
 let expect = require('chai').expect;
-let Server = require('../index');
+let Server = require('../helpers/server');
 let db = Server.get('db');
 
 describe('api server', () => {
