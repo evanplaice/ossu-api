@@ -2,9 +2,9 @@
   "name": "ossu-api",
   "version": "0.0.1",
   "description": "Open Source Society API",
-  "main": "index.js",
+  "main": "bin/server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node bin/server.js",
     "test": "semistandard",
     "check-style": "semistandard || true"
   },
@@ -24,19 +24,20 @@
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "helmet": "^0.12.0",
+    "inflection": "^1.7.2",
     "mongodb": "^2.0.45",
+    "mongoose": "^4.1.0",
     "passport": "^0.3.0",
     "passport-github2": "0.1.9",
     "passport-http": "0.2.2",
-    "redis": "*",
-    "mongoose": "^4.1.0"
+    "redis": "*"
   },
   "license": "MIT",
   "homepage": "https://github.com/open-source-society/ossu-api",
   "bugs": {
     "url": "https://github.com/open-source-society/ossu-api/issues"
   },
-    "semistandard": {
+  "semistandard": {
     "parser": "babel-eslint"
   }
 }
