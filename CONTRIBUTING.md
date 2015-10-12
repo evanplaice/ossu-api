@@ -51,7 +51,7 @@ npm install --dev
 
 SemiStandard can be run with the tests
 ```bash
-npm test
+NODE_ENV=test npm test
 ```
 
 Or standalone

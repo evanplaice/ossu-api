@@ -6,6 +6,8 @@ let mongoose = require('mongoose');
 
 let loader = require('./loader');
 
+const MONGO_URI = process.env.NODE_ENV == 'test' ? process.env.MONGO_TEST_URI : process.env.MONGO_URI;
+
 //connect to the database
 mongoose.connect(process.env.MONGO_URI);
 db['database'] = mongoose.connection;

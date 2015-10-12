@@ -1,32 +1,35 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+'use strict';
+
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
 module.exports = () => {
-  var userSchema = new Schema ({
-    fname:          String,
-    lname:          String,
-    email:          { type: String, index: true },
-    github:         { type: String, index: true },
-    twitter:        String,
-    linkedin:       String,
+  let userSchema = new Schema({
+    fname: String,
+    lname: String,
+    email: { type: String, index: true },
+    github: { type: String, index: true },
+    twitter: String,
+    linkedin: String,
 
     account: {
-      admin:        { type: Boolean, default: false },
-      active:       { type: Boolean, default: false },
-      lastlogin:    { type: Date, default: Date.now },
-      registered:   { type: Date, default: Date.now },
+      admin: { type: Boolean, default: false },
+      active: { type: Boolean, default: false },
+      lastlogin: { type: Date, default: Date.now },
+      registered: { type: Date, default: Date.now }
     },
 
     // When a user enrolls in a curriculum add to this array [['Computer Science and Engineering', (monogo_object trakcing progess)]]
     // Front end can generate link to their progress page from this....
     curriculum: [ {
-      id:                           Schema.Types.ObjectId,
-      started:                      Date,
-      completed:                    { type: Boolean, default: false },
+      id: { type: Schema.Types.ObjectId, ref: 'curriculum' },
+      started: Date,
+      completed: { type: Boolean, default: false },
       progress: [ {
-        course_id:                  Schema.Types.ObjectId,
-        started:                    Date,
-        completed:                  { type: Boolean, default: false }
+        course: { type: Schema.Types.ObjectId, ref: 'course' },
+        started: Date,
+        completed: { type: Boolean, default: false },
+        verified: { type: Boolean, default: false }
       } ]
     } ],
 
@@ -36,18 +39,11 @@ module.exports = () => {
     * just use a city and country for now
     */
     location: {
-      public:   { type: Boolean, default: true},
-      city:     String,
-      country:  String,
-      // lat:      Number,
-      // lon:      Number
+      public: { type: Boolean, default: true },
+      city: String,
+      country: String
     }
   });
 
-  // static methods
-  userSchema.statics.createUser = (newUser, callback) => {
-      newUser.save(callback);
-  };
-
   return mongoose.model('user', userSchema);
-}
+};
