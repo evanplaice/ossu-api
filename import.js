@@ -1,8 +1,6 @@
+require('dotenv').load();
 var https = require('https');
 var fs = require('fs');
-// var credentials = require('./credentials.json');
-// var authorization = new Buffer(credentials.username + ":" + credentials.password, 'ascii').toString('base64');
-var authorization = require('./credentials.json').token;
 
 // --------------------------------
 
@@ -187,8 +185,7 @@ var options = {
   path: inputPath,
   method: 'GET',
   headers: {
-    'Authorization': 'token ' + authorization,
-//    'Authorization': 'Basic ' + authorization,
+    'Authorization': 'token ' + process.env.GHTOKEN,
     'Content-Type': 'application/json',
     'User-Agent': 'node.js'
   },

@@ -6,7 +6,6 @@ data
 *.swp
 *.~
 npm-debug.log
-credentials.json
 
 // apple metadata
 .DS_Store
