@@ -1,4 +1,9 @@
+'use strict';
+
+// load env variables
 require('dotenv').load();
+
+// load deps
 var https = require('https');
 var fs = require('fs');
 
@@ -22,8 +27,8 @@ methods.offline = (options, callback) => {
 
 // scrape data from github issues
 methods.scrape = (options, callback) => {
-  var req = https.get(options, function (res) {
-    var data = '';
+  let req = https.get(options, function (res) {
+    let data = '';
     res.on('data', function (chunk) {
       data += chunk;
     });
@@ -58,7 +63,7 @@ filters.prettify = (output, options, callback) => {
 
 // plaintext, extracts and flattens the profiles as plaintext
 filters.plaintext = (data, options, callback) => {
-  var output = '';
+  let output = '';
   JSON.parse(data).forEach((k, v) => {
     if (k.body !== '') {
       output += k.body;
@@ -69,12 +74,12 @@ filters.plaintext = (data, options, callback) => {
 
 // prepare, extracts the user data and prepares it for import
 filters.prepare = (data, options, callback) => {
-  var output = [];
-  var count = 0;
+  let output = [];
+  let count = 0;
   JSON.parse(data).forEach((k, v) => {
     // only parse the issue body
     if (k.body !== '') {
-      var profile = extractDetails(k.body);
+      let profile = extractDetails(k.body);
       if (profile !== null) {
         count++;
         output.push(profile);
@@ -88,58 +93,58 @@ filters.prepare = (data, options, callback) => {
 
 // extract profile data, regex match and extract data
 function extractDetails (body) {
-  var profile = {};
+  let profile = {};
   profile.fullname = body.match(/\*\*Name\*\*: (.+)/im);
   if (!profile.fullname) {
     return null;
   }
   profile.fullname = profile.fullname[1];
-  var github = body.match(/\*\*GitHub\*\*: \[(.+)\]\((.+)\)/im);
+  let github = body.match(/\*\*GitHub\*\*: \[(.+)\]\((.+)\)/im);
   if (github) {
     profile.github = {};
-    var gname = github[1].match(/@.+/i);
-    if (gname) {
-      profile.github.name = gname[0];
+    let name = github[1].match(/@.+/i);
+    if (name) {
+      profile.github.name = name[0];
     }
-    var glink = github[2].match(/(http:\/\/|https:\/\/).+/i);
-    if (glink) {
-      profile.github.link = glink[0];
+    let link = github[2].match(/(http:\/\/|https:\/\/).+/i);
+    if (link) {
+      profile.github.link = link[0];
     }
   }
-  var twitter = body.match(/\*\*Twitter\*\*: \[(.+)\]\((.+)\)/im);
+  let twitter = body.match(/\*\*Twitter\*\*: \[(.+)\]\((.+)\)/im);
   if (twitter) {
     profile.twitter = {};
-    var tname = twitter[1].match(/@.+/i);
-    if (tname) {
-      profile.twitter.name = tname[0];
+    let name = twitter[1].match(/@.+/i);
+    if (name) {
+      profile.twitter.name = name[0];
     }
-    var tlink = twitter[2].match(/(http:\/\/|https:\/\/).+/i);
-    if (tlink) {
-      profile.twitter.link = tlink[0];
+    let link = twitter[2].match(/(http:\/\/|https:\/\/).+/i);
+    if (link) {
+      profile.twitter.link = link[0];
     }
   }
-  var linkedin = body.match(/\*\*LinkedIn\*\*: \[(.+)\]\((.+)\)/im);
+  let linkedin = body.match(/\*\*LinkedIn\*\*: \[(.+)\]\((.+)\)/im);
   if (linkedin) {
     profile.linkedin = {};
-    var lname = linkedin[1].match(/@.+/i);
-    if (lname) {
-      profile.linkedin.name = lname[0];
+    let name = linkedin[1].match(/@.+/i);
+    if (name) {
+      profile.linkedin.name = name[0];
     }
-    var llink = linkedin[2].match(/(http:\/\/|https:\/\/).+/i);
-    if (llink) {
-      profile.linkedin.link = llink[0];
+    let link = linkedin[2].match(/(http:\/\/|https:\/\/).+/i);
+    if (link) {
+      profile.linkedin.link = link[0];
     }
   }
-  var website = body.match(/\*\*Website\*\*: \[(.+)\]\((.+)\)/im);
+  let website = body.match(/\*\*Website\*\*: \[(.+)\]\((.+)\)/im);
   if (website) {
     profile.website = {};
-    var wname = website[1].match(/@.+/i);
-    if (wname) {
-      profile.website.name = wname[0];
+    let name = website[1].match(/@.+/i);
+    if (name) {
+      profile.website.name = name[0];
     }
-    var wlink = website[2].match(/(http:\/\/|https:\/\/).+/i);
-    if (wlink) {
-      profile.website.link = wlink[0];
+    let link = website[2].match(/(http:\/\/|https:\/\/).+/i);
+    if (link) {
+      profile.website.link = link[0];
     }
   }
   return profile;
@@ -171,13 +176,13 @@ outputs.save = (data, options, callback) => {
 
 // --------------------------------
 
-var method = methods.offline;
+var method = methods.scrape;
 var filter = filters.prepare;
-var output = outputs.save;
-// var inputPath = '/repos/open-source-society/computer-science/issues/31/comments?per_page=700';
+var output = outputs.print;
+var inputPath = '/repos/open-source-society/computer-science/issues/31/comments?per_page=700';
 // var inputPath = '/repos/open-source-society/computer-science/issues/109/comments';
-var inputPath = './data/issues.json';
-var outputPath = './data/profiles.json';
+// var inputPath = './data/issues.json';
+var outputPath = './data/profiles.txt';
 
 var options = {
   host: 'api.github.com',
