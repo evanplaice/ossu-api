@@ -6,9 +6,35 @@ require('dotenv').load();
 // load deps
 var https = require('https');
 var fs = require('fs');
+var argv = require('minimist')(process.argv.slice(2));
 
 // --------------------------------
 
+// scrape profiles
+if (argv.s || argv.scrape) {
+  var inputPath = '/repos/open-source-society/computer-science/issues/31/comments?per_page=700';
+  var outputPath = './data/profiles.json';
+
+  var Profiles = new Profiles();
+  var options = {
+    host: 'api.github.com',
+    port: 443,
+    path: argv._ || inputPath,
+    method: 'GET',
+    headers: {
+      'Authorization': 'token ' + process.env.GHTOKEN,
+      'Content-Type': 'application/json',
+      'User-Agent': 'node.js'
+    },
+    input: Profiles.inputs.scrape,
+    // if --filter isn't set use filters.prepare
+    filter: (argv.filter ? Profiles.filters[argv.filter] : Profiles.filters.prepare),
+    // if --output isn't set use outputs.print
+    output: (argv.output ? Profiles.outputs.save : Profiles.outputs.print),
+    save: argv.output || outputPath
+  };
+  Profiles.run(options);
+}
 function Profiles(options) {
 
   // methods for processing profile data
