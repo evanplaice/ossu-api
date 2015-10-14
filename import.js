@@ -85,6 +85,11 @@ if (argv.o || argv.offline) {
   };
   Profiles.run(options);
 }
+if (argv.m || argv.migrate) {
+  // TODO: profiles migration support
+  console.err('Profiles migration not implemented');
+}
+
 function Profiles(options) {
 
   // methods for processing profile data
@@ -95,7 +100,6 @@ function Profiles(options) {
 
   // load data from file
   this.inputs.offline = (options, callback) => {
-    console.log(options);
     fs.readFile(options.path, (err, data) => {
       if (err) {
         console.log(err);
@@ -118,6 +122,10 @@ function Profiles(options) {
     req.on('error', function (e) {
       console.log(e.message);
     });
+  };
+
+  this.inputs.migrate = (options, callback) => {
+    // TODO: profiles migration support
   };
 
   // methods for filtering profile data
