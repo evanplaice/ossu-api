@@ -48,7 +48,7 @@ if (argv.s || argv.scrape) {
   var options = {
     host: 'api.github.com',
     port: 443,
-    path: argv._ || inputPath,
+    path: argv._[0] || inputPath,
     method: 'GET',
     headers: {
       'Authorization': 'token ' + process.env.GHTOKEN,
