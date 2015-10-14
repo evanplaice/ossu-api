@@ -10,6 +10,35 @@ var argv = require('minimist')(process.argv.slice(2));
 
 // --------------------------------
 
+if (argv.h || argv.help) {
+  console.log([
+    'usage: node import.js -hsom [--filter <filter>] [--output <path>] [url/path]',
+    '',
+    '-h --help        Print this list and exit.',
+    '',
+    'methods:',
+    '  -s --scrape    Scrapes GitHub for profile data',
+    '  -o --offline   Use an offline dump of profile data',
+    '  -m --migrate   Show directory listings [true]',
+    '',
+    'options:',
+    '  --filter       Filter the data [none|prettify|plaintext|prepare]',
+    '  --output       Save to a file',
+    '',
+    'usage:',
+    '',
+    '  Dump a sample profiles.json:',
+    '  node import.js --scrape --output ./data/profiles.json',
+    '',
+    '  Dump a sample profiles.txt',
+    '  node import.js --scrape --filter plaintext --output ./data/profiles.txt',
+    '',
+    '  Dump a sample issues.json:',
+    '  node import.js --scrape --filter prettify --output ./data/issues.json'
+  ].join('\n'));
+  process.exit();
+}
+
 // scrape profiles
 if (argv.s || argv.scrape) {
   var inputPath = '/repos/open-source-society/computer-science/issues/31/comments?per_page=700';
