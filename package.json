@@ -1,6 +1,6 @@
 {
   "name": "ossu-api",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Open Source Society API",
   "main": "index.js",
   "scripts": {
