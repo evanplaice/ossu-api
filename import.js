@@ -34,7 +34,10 @@ if (argv.h || argv.help) {
     '  node import.js --scrape --filter plaintext --output ./data/profiles.txt',
     '',
     '  Dump a sample issues.json:',
-    '  node import.js --scrape --filter prettify --output ./data/issues.json'
+    '  node import.js --scrape --filter prettify --output ./data/issues.json',
+    '',
+    '  Offline process an issues.json dump',
+    '  node import.js --offline --output ./data/profiles.json'
   ].join('\n'));
   process.exit();
 }
@@ -64,6 +67,24 @@ if (argv.s || argv.scrape) {
   };
   Profiles.run(options);
 }
+
+// load offline profiles
+if (argv.o || argv.offline) {
+  var inputPath = './data/issues.json';
+  var outputPath = './data/profiles.json';
+
+  var Profiles = new Profiles();
+  var options = {
+    path: argv._[0] || inputPath,
+    input: Profiles.inputs.offline,
+    // if --filter isn't set use filters.prepare
+    filter: (argv.filter ? Profiles.filters[argv.filter] : Profiles.filters.prepare),
+    // if --output isn't set use outputs.print
+    output: (argv.output ? Profiles.outputs.save : Profiles.outputs.print),
+    save: argv.output || outputPath
+  };
+  Profiles.run(options);
+}
 function Profiles(options) {
 
   // methods for processing profile data
@@ -74,7 +95,8 @@ function Profiles(options) {
 
   // load data from file
   this.inputs.offline = (options, callback) => {
-    fs.readFile(options, (err, data) => {
+    console.log(options);
+    fs.readFile(options.path, (err, data) => {
       if (err) {
         console.log(err);
       }
