@@ -246,32 +246,3 @@ function Profiles(options) {
     options.input(options, options.output);
   };
 }
-
-// --------------------------------
-
-
-// --------------------------------
-
-var method = methods.scrape;
-var filter = filters.prepare;
-var output = outputs.print;
-var inputPath = '/repos/open-source-society/computer-science/issues/31/comments?per_page=700';
-// var inputPath = '/repos/open-source-society/computer-science/issues/109/comments';
-// var inputPath = './data/issues.json';
-var outputPath = './data/profiles.txt';
-
-var options = {
-  host: 'api.github.com',
-  port: 443,
-  path: inputPath,
-  method: 'GET',
-  headers: {
-    'Authorization': 'token ' + process.env.GHTOKEN,
-    'Content-Type': 'application/json',
-    'User-Agent': 'node.js'
-  },
-  filter: filter,
-  output: outputPath
-};
-
-method(options, output);
