@@ -12,6 +12,7 @@ That said, if you want to become a regular contributor to the project and a memb
 1. Please fill out [this form here][form]
 2. Within 48 hours we will send you a Slack invite so you can introduce yourself and come chat with us
 3. If all goes well, we will send you an invite to the OSS organization on GitHub
+4. At this point you will be given access to the task tracking tool
 
 ## Workflow
 
