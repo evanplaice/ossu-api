@@ -42,22 +42,8 @@ module.exports = () => {
       public: { type: Boolean, default: true },
       city: String,
       country: String
-      // lat:      Number,
-      // lon:      Number
     }
-
   });
-
-  // static methods
-  // userSchema.statics.
-
-  // instance methods
-
-  // userSchema.methods.setCoordinates = function(cb) {
-  //   // compute coordinates using a map library
-  //   // save under this.lat and this.lon
-  //   // cb()
-  // }
 
   return mongoose.model('user', userSchema);
 };
