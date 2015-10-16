@@ -4,4 +4,4 @@ set -e
 
 export NODE_ENV=test;
 
-semistandard && mocha
+semistandard && node_modules/.bin/mocha

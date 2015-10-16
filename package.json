@@ -5,7 +5,7 @@
   "main": "bin/server.js",
   "scripts": {
     "start": "node index.js",
-    "test": "semistandard && node_modules/.bin/mocha",
+    "test": "semistandard && scripts/test",
     "check-style": "semistandard || true"
   },
   "repository": {
