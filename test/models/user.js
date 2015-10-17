@@ -2,6 +2,7 @@
 'use strict';
 
 let expect = require('chai').expect;
+let fixture = require('../fixtures/users.json');
 
 module.exports = (db) => {
   describe('User Model', () => {
@@ -14,26 +15,7 @@ module.exports = (db) => {
     });
 
     it('saves without error', (done) => {
-      let user = new Model({
-        username: 'Marcus Aurelius',
-        email: 'marcusaurelius@rome.gov',
-        github: {
-          nick: '@soicismftw',
-          link: 'https://github.com/soicismftw'
-        },
-        twitter: {
-          nick: '@strengthandhonor',
-          link: 'https://www.linkedin.com/in/strengthandhonor'
-        },
-        linkedin: {
-          nick: 'Emperor Marcus Aurelius',
-          link: 'https://www.linkedin.com/in/emperor.marcus.aurelius'
-        },
-        website: {
-          title: 'Meditations of Marcus Aurelius',
-          link: 'http://marcusaurelius.com'
-        }
-      });
+      let user = new Model(fixture[0]);
 
       user.save((err, model) => {
         expect(err).to.be.null;
