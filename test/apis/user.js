@@ -1,4 +1,4 @@
-/*global describe it before after */
+/*global describe it beforeEach after */
 'use strict';
 
 let expect = require('chai').expect;
@@ -12,10 +12,12 @@ module.exports = (app, db) => {
     let user1 = new Model(fixture[0]);
     let user2 = new Model(fixture[1]);
 
-    before((done) => {
+    beforeEach((done) => {
       Model.remove()
+        .then(() => { user1 = new Model(fixture[0]); })
         .then(user1.save())
-        .then(user2.save())
+        .then(() => { user2 = new Model(fixture[1]); })
+        .then(user2.save)
         .then(done());
     });
 
