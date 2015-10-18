@@ -79,5 +79,15 @@ module.exports = (app, db) => {
           done();
         });
     });
+
+    it('should delete a user', (done) => {
+      request(app)
+        .delete('/api/users/' + user1._id)
+        .expect(204)
+        .end((err, res) => {
+          expect(err).to.be.null;
+          done();
+        });
+    });
   });
 };
