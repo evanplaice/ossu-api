@@ -50,6 +50,21 @@ module.exports = (app, db) => {
         });
     });
 
+    it('should create a user', (done) => {
+      let user = new Model(fixture[2]);
+      request(app)
+        .post('/api/users')
+        .set('Accept', 'applicatoin/json')
+        .send(user)
+        .expect('Content-Type', /json/)
+        .expect(201)
+        .end((err, res) => {
+          expect(err).to.be.null;
+          expect(res.body.username).to.equal(user.username);
+          done();
+        });
+    });
+
     it('should update a user\'s name', (done) => {
       let user = { username: 'Marcus Badass Aurelius' };
       request(app)
@@ -61,6 +76,16 @@ module.exports = (app, db) => {
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res.body.username).to.equal(user.username);
+          done();
+        });
+    });
+
+    it('should delete a user', (done) => {
+      request(app)
+        .delete('/api/users/' + user1._id)
+        .expect(204)
+        .end((err, res) => {
+          expect(err).to.be.null;
           done();
         });
     });

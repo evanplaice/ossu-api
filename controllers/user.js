@@ -42,7 +42,6 @@ var UserController = function (db) {
         res.status(400).send(err);
         return;
       }
-      console.log('this shouldnt execute');
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(user);
     });
@@ -60,13 +59,13 @@ var UserController = function (db) {
   };
 
   UserController.prototype.destroy = (req, res) => {
-    Model.remove(req.params.id, (err) => {
+    Model.findByIdAndRemove({ _id: req.params.id }, (err) => {
       if (err) {
         res.status(400).send(err);
         return;
       }
       // TODO: verify the record is destroyed?
-      res.status(204);
+      res.status(204).send();
     });
   };
 };
