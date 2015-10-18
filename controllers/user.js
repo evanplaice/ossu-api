@@ -42,7 +42,6 @@ var UserController = function (db) {
         res.status(400).send(err);
         return;
       }
-      console.log('this shouldnt execute');
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(user);
     });
