@@ -59,13 +59,13 @@ var UserController = function (db) {
   };
 
   UserController.prototype.destroy = (req, res) => {
-    Model.remove(req.params.id, (err) => {
+    Model.findByIdAndRemove({ _id: req.params.id }, (err) => {
       if (err) {
         res.status(400).send(err);
         return;
       }
       // TODO: verify the record is destroyed?
-      res.status(204);
+      res.status(204).send();
     });
   };
 };
