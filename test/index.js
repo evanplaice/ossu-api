@@ -27,3 +27,7 @@ describe('api server', () => {
 describe('Models', () => {
   require('./models')(db);
 });
+
+describe('APIs', () => {
+  require('./apis')(Server, db);
+});

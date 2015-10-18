@@ -13,7 +13,10 @@ module.exports = (Controller) => {
   router.get('/:id', Controller.get);
 
   /** save a new user */
-  router.post('/:id', Controller.create);
+  router.post('/', Controller.create);
+
+  /** save a new user */
+  router.put('/:id', Controller.update);
 
   /** delete a user */
   router.delete('/:id', Controller.destroy);

@@ -5,13 +5,24 @@ let Schema = mongoose.Schema;
 
 module.exports = () => {
   let userSchema = new Schema({
-    fname: String,
-    lname: String,
+    username: { type: String, index: true },
     email: { type: String, index: true },
-    github: { type: String, index: true },
-    twitter: String,
-    linkedin: String,
-
+    github: {
+      nick: { type: String, index: true },
+      link: String
+    },
+    twitter: {
+      nick: { type: String, index: true },
+      link: String
+    },
+    linkedin: {
+      nick: { type: String, index: true },
+      link: String
+    },
+    website: {
+      title: String,
+      link: String
+    },
     account: {
       admin: { type: Boolean, default: false },
       active: { type: Boolean, default: false },

@@ -1,0 +1,30 @@
+[
+  {
+    "username": "Marcus Aurelius",
+    "email": "marcusaurelius@rome.gov",
+    "github": {
+      "nick": "@stoicismftw",
+      "link": "https://github.com/soicismftw"
+    },
+    "twitter": {
+      "nick": "@strengthandhonor",
+      "link": "https://www.linkedin.com/in/strengthandhonor"
+    },
+    "linkedin": {
+      "nick": "Emperor Marcus Aurelius",
+      "link": "https://www.linkedin.com/in/emperor.marcus.aurelius"
+    },
+    "website": {
+      "title": "Meditations of Marcus Aurelius",
+      "link": "http://marcusaurelius.com"
+    }
+  },
+  {
+    "username": "Imperator Nero Cladius Divi Claudius filius Caesar Augustus Germanicus",
+    "email": "itsgettinhotinhurr@aol.com",
+    "linkedin": {
+      "nick": "Imperator Firefighting - Pay us or we'll toast you",
+      "link": "http://imperatorfirefighting.org"
+    }
+  }
+]
