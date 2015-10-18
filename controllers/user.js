@@ -10,16 +10,15 @@
 
 // Using the Clojure to load the database and the specific model;
 var Model;
-// var database;
 
 var UserController = function (db) {
-  // database = db;
   Model = db.User;
 
   UserController.prototype.create = (req, res) => {
     Model.create(req.body, (err, user) => {
       if (err) {
         res.status(400).send(err);
+        return;
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(201).json(user);
@@ -30,6 +29,7 @@ var UserController = function (db) {
     Model.find({}, (err, users) => {
       if (err) {
         res.status(400).send(err);
+        return;
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users);
@@ -40,17 +40,19 @@ var UserController = function (db) {
     Model.findById(req.params.id, (err, user) => {
       if (err) {
         res.status(400).send(err);
+        return;
       }
+      console.log('this shouldnt execute');
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(user);
     });
   };
 
   UserController.prototype.update = (req, res) => {
-    // console.log({ $push: req.body });
     Model.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
       if (err) {
         res.status(400).send(err);
+        return;
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(user);
@@ -61,6 +63,7 @@ var UserController = function (db) {
     Model.remove(req.params.id, (err) => {
       if (err) {
         res.status(400).send(err);
+        return;
       }
       // TODO: verify the record is destroyed?
       res.status(204);
