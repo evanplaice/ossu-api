@@ -47,7 +47,8 @@ var UserController = function (db) {
   };
 
   UserController.prototype.update = (req, res) => {
-    Model.update({ _id: req.params.id }, req.body, (err, user) => {
+    // console.log({ $push: req.body });
+    Model.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
       if (err) {
         res.status(400).send(err);
       }
