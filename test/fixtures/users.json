@@ -26,5 +26,25 @@
       "nick": "Imperator Firefighting - Pay us or we'll toast you",
       "link": "http://imperatorfirefighting.org"
     }
+  },
+  {
+    "username": "Spartacus",
+    "email": "spartacus@gmail.com",
+    "github": {
+      "nick": "@bringerofrain",
+      "link": "https://github.com/bringerofrain"
+    },
+    "twitter": {
+      "nick": "@strengthandhonor",
+      "link": "https://www.linkedin.com/in/strengthandhonor"
+    },
+    "linkedin": {
+      "nick": "Spartacus",
+      "link": "https://www.linkedin.com/in/spartacus"
+    },
+    "website": {
+      "title": "Conquering A Tyrant",
+      "link": "http://spartacus.com"
+    }
   }
 ]
