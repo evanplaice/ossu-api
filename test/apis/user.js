@@ -49,5 +49,20 @@ module.exports = (app, db) => {
           done();
         });
     });
+
+    it('should update a user\'s name', (done) => {
+      let user = { username: 'Marcus Badass Aurelius' };
+      request(app)
+        .put('/api/users/' + user1._id)
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .send(user)
+        .expect(200)
+        .end((err, res) => {
+          expect(err).to.be.null;
+          expect(res.body.username).to.equal(user.username);
+          done();
+        });
+    });
   });
 };
