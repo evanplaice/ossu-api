@@ -39,7 +39,6 @@ module.exports = (Controller) => {
 
   /**
    * @api {get} /api/user/:id Get User
-   * @apiVersion 0.1.0
    * @apiName GetUser
    * @apiGroup User
    * @apiPermission none
