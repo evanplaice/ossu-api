@@ -43,25 +43,25 @@ module.exports = (Controller) => {
    * @apiGroup User
    * @apiPermission none
    *
-   * @apiDescription Fetches the user's data from the API.
+   * @apiDescription Fetches a user's data.
    *
-   * @apiParam {String} id User's ID.
+   * @apiParam {String}     id              User's ID.
    *
    * @apiExample Example usage:
    * curl -H "Content-Type: application/json" http://localhost:8080/api/users/5623321f1aa8b1da3366b0d1
    *
    * @apiSuccess {String}   username        Fullname of the User.
-   * @apiSuccess {Date}     email           Email address.
+   * @apiSuccess {String}   email           Email address.
    * @apiSuccess {Object}   github          GitHub Profile info.
    * @apiSuccess {String}   github.nick     User handle.
    * @apiSuccess {String}   github.link     Profile link.
-   * @apiSuccess {String}   twitter         Twitter Profilie info.
+   * @apiSuccess {Object}   twitter         Twitter Profilie info.
    * @apiSuccess {String}   twitter.nick    User handle.
    * @apiSuccess {String}   twitter.link    Feed link.
-   * @apiSuccess {String}   linkedin        LinkedIn Profile info.
+   * @apiSuccess {Object}   linkedin        LinkedIn Profile info.
    * @apiSuccess {String}   linkedin.nick   User handle.
    * @apiSuccess {String}   linkedin.link   Profile link.
-   * @apiSuccess {String}   website         Website Info.
+   * @apiSuccess {Object}   website         Website Info.
    * @apiSuccess {String}   website.title   Title.
    * @apiSuccess {String}   website.link    URL.
    * @apiSuccess {Object}   account         Internal user options
