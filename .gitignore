@@ -1,0 +1,8 @@
+data
+.env
+npm-debug.log
+
+// apple metadata
+.DS_Store
+.AppleDouble
+.LSOverride
