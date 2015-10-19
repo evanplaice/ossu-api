@@ -172,7 +172,22 @@ module.exports = (Controller) => {
    */
   router.put('/:id', Controller.update);
 
-  /** delete a user */
+  /**
+   * @api {get} /api/user/:id Delete User
+   * @apiName DeleteUser
+   * @apiGroup User
+   * @apiPermission authenticated
+   *
+   * @apiDescription Deletes a user profile.
+   *
+   * @apiParam   {String}   id              User's ID.
+   *
+   * @apiExample Example usage:
+   * curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/api/users/[id]
+   *
+   * @apiUse UserNotFoundError
+   * @apiUse UserNotAuthenticatedError
+   */
   router.delete('/:id', Controller.destroy);
 
   return router;
