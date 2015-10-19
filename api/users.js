@@ -6,10 +6,71 @@ let express = require('express');
 module.exports = (Controller) => {
   let router = express.Router();
 
-  /** list all users */
+  /**
+   * @apiDefine authenticated Authenticated access only
+   * This optional description belong to to the group admin.
+   */
+
+  /**
+   * @apiDefine admin Admin access only
+   * This optional description belong to to the group admin.
+   */
+
+  /**
+   * @apiDefine UserNotFoundError
+   *
+   * @apiError UserNotFound The <code>id</code> of the User was not found.
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 400 Bad Request
+   */
+
+  /**
+   * @apiDefine UserNotAuthenticatedError
+   *
+   * @apiError UserNotAuthenticated Only authencicated users can access the data.
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 403 Forbidden
+   */
+
+
   router.get('/', Controller.show);
 
-  /** get user by id */
+  /**
+   * @api {get} /api/user/:id Get User
+   * @apiVersion 0.1.0
+   * @apiName GetUser
+   * @apiGroup User
+   * @apiPermission none
+   *
+   * @apiDescription Fetches the user's data from the API.
+   *
+   * @apiParam {String} id User's ID.
+   *
+   * @apiExample Example usage:
+   * curl -H "Content-Type: application/json" http://localhost:8080/api/users/5623321f1aa8b1da3366b0d1
+   *
+   * @apiSuccess {String}   username        Fullname of the User.
+   * @apiSuccess {Date}     email           Email address.
+   * @apiSuccess {Object}   github          GitHub Profile info.
+   * @apiSuccess {String}   github.nick     User handle.
+   * @apiSuccess {String}   github.link     Profile link.
+   * @apiSuccess {String}   twitter         Twitter Profilie info.
+   * @apiSuccess {String}   twitter.nick    User handle.
+   * @apiSuccess {String}   twitter.link    Feed link.
+   * @apiSuccess {String}   linkedin        LinkedIn Profile info.
+   * @apiSuccess {String}   linkedin.nick   User handle.
+   * @apiSuccess {String}   linkedin.link   Profile link.
+   * @apiSuccess {String}   website         Website Info.
+   * @apiSuccess {String}   website.title   Title.
+   * @apiSuccess {String}   website.link    URL.
+   * @apiSuccess {Object}   account         Internal user options
+   * @apiSuccess {Object}   curriculum      Curriculum the user is enrolled in.
+   * @apiSuccess {Object}   location        Location information.
+   *
+   * @apiUse UserNotFoundError
+   */
   router.get('/:id', Controller.get);
 
   /** save a new user */
