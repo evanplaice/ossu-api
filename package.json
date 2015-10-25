@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "bash scripts/test",
-    "check-style": "semistandard || true"
+    "check-style": "semistandard || true",
+    "apidoc": "apidoc -i api/ -o docs/"
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,9 @@
   },
   "semistandard": {
     "parser": "babel-eslint"
+  },
+  "apidoc": {
+    "title": "Open Source Society University API",
+    "url" : ""
   }
 }

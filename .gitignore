@@ -1,6 +1,8 @@
 node_modules
 npm-debug.log
 data
+docs
+index.html
 .env
 *.swo
 *.swp
